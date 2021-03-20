@@ -4,6 +4,22 @@ const { User, Story }= require('../models');
 
 const resolvers = {
     Query: {
+        //works with Me: User in typeDefs Query so server can send JWT with every request
+        //note also requires adding context to server.js and uses middleware in utils/auth
+        //me method checks for existence for existence of context.user property and authentication error if not
+        me: async (parent, args, context) => {
+            if (context.user) {
+              const userData = await User.findOne({ _id: context.user._id })
+                .select('-__v -password')
+                .populate('thoughts')
+                .populate('friends');
+          
+              return userData;
+            }
+          
+            throw new AuthenticationError('Not logged in');
+        },
+        
         //get all stories
         stories: async (parent, { username }) => {
             const params = username ? { username } : {};

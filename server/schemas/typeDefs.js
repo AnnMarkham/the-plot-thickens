@@ -34,8 +34,8 @@ type User {
   token: ID!
   user: User
 }
-
-  type Query {
+   type Query {
+    me: User
     users: [User]
     user(username: String!): User
     stories(username: String): [Story]
