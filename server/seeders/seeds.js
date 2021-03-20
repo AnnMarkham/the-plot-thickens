@@ -47,7 +47,7 @@ db.once('open', async () => {
 
     const updatedUser = await User.updateOne(
       { _id: userId },
-      { $push: { storiess: createdStory._id } }
+      { $push: { stories: createdStory._id } }
     );
 
     createdStories.push(createdStory);

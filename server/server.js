@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
@@ -17,11 +18,22 @@ const server = new ApolloServer({
   context: authMiddleware
 });
 
+//from here to db.once = sets up ability of back end server's code to serv up React front-end code
+// requires path and code in root package.json if-env
 // integrate our Apollo server with the Express application as middleware
 server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Serve up static assets
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 db.once('open', () => {
   app.listen(PORT, () => {

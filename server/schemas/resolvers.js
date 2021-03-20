@@ -11,8 +11,8 @@ const resolvers = {
             if (context.user) {
               const userData = await User.findOne({ _id: context.user._id })
                 .select('-__v -password')
-                .populate('thoughts')
-                .populate('friends');
+                .populate('stories')
+                .populate('collaborators');
           
               return userData;
             }
@@ -41,7 +41,7 @@ const resolvers = {
           user: async (parent, { username }) => {
             return User.findOne({ username })
               .select('-__v -password')
-              .populate('thoughts')
+              .populate('stories')
               .populate('collaborators')
         },
     },
@@ -90,7 +90,36 @@ const resolvers = {
             }
           
             throw new AuthenticationError('You need to be logged in!');
-          }
+          },
+
+          addNote: async (parent, { storyId, noteBody }, context) => {
+            if (context.user) {
+              const updatedStory = await Story.findOneAndUpdate(
+                { _id: storytId },
+                { $push: { notes: { noteBody, username: context.user.username } } },
+                { new: true, runValidators: true }
+              );
+          
+              return updatedStory;
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
+          },
+
+          addCollaborator: async (parent, { collaboratorId }, context) => {
+            if (context.user) {
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: { collborators: colaboratorId } },
+                { new: true }
+              ).populate('collaborators');
+          
+              return updatedUser;
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
+          },
+          
 
       }
     };
