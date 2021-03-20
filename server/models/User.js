@@ -26,6 +26,12 @@ const userSchema = new Schema(
         ref: 'Story'
       }
     ],
+    collaborators: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
   },
   {
     toJSON: {
