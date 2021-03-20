@@ -19,7 +19,7 @@ const resolvers = {
           
             throw new AuthenticationError('Not logged in');
         },
-        
+
         //get all stories
         stories: async (parent, { username }) => {
             const params = username ? { username } : {};
@@ -53,6 +53,7 @@ const resolvers = {
           
             return { token, user };
           },
+
           login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
           
@@ -68,7 +69,29 @@ const resolvers = {
           
             const token = signToken(user);
             return { token, user };
+          },
+
+          //first check for context.user
+          //decoded JWT is only added to context if verification passes
+          //token includes username, email & _id which can then be used in Story.create() & User.findByIdAndUpdate
+        
+          addStory: async (parent, args, context) => {
+            if (context.user) {
+              const story = await Story.create({ ...args, username: context.user.username });
+          
+              await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { stories: story._id } },
+                //if not new: true, Mondo would return original doc instead of updated one
+                { new: true }
+              );
+          
+              return story;
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
           }
+
       }
     };
 

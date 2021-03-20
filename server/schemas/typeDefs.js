@@ -43,10 +43,12 @@ type User {
   }
 
   type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-  }
-
+  login(email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!): Auth
+  addStory(storyText: String!): Story
+  addNote(storyId: ID!, noteBody: String!): Story
+  addCollaborator(collaboratorId: ID!): User
+}
 `;
 
 // export the typeDefs
