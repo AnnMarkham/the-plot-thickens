@@ -1,3 +1,4 @@
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_STORIES } from '../utils/queries';
 import StoryList from '../components/StoryList';

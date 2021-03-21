@@ -5,10 +5,10 @@ export const QUERY_STORIES = gql`
     stories(username: $username) {
       _id
      storyText
-      createdAt
-      username
+     createdAt
+     username
      noteCount
-      notess {
+      notes {
         _id
         createdAt
         username

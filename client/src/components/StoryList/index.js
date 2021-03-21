@@ -5,8 +5,6 @@ const StoryList = ({ stories, title }) => {
     return <h3>No Stories Yet</h3>;
   }
 
-//two props (title and stories array) destructure to avoid having to use props.title props.stories
-// check notecount and conditionally display (start the discussion)
   return (
     <div>
       <h3>{title}</h3>
@@ -21,7 +19,7 @@ const StoryList = ({ stories, title }) => {
               <p>{story.storyText}</p>
               <p className="mb-0">
                 Notes: {story.noteCount} || Click to{' '}
-                {story.noteCount ? 'see' : 'start'} the discussion!
+                {story.noteCount ? 'see' : 'add'} add a note!
               </p>
             </div>
           </div>

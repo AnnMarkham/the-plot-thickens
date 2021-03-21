@@ -20,22 +20,22 @@ db.once('open', async () => {
 
   const createdUsers = await User.collection.insertMany(userData);
 
-   // create collaborators
-   for (let i = 0; i < 100; i += 1) {
+  // create friends
+  for (let i = 0; i < 100; i += 1) {
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { _id: userId } = createdUsers.ops[randomUserIndex];
 
-    let collaboratorId = userId;
+    let friendId = userId;
 
-    while (collaboratorId === userId) {
+    while (friendId === userId) {
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       friendId = createdUsers.ops[randomUserIndex];
     }
 
-    await User.updateOne({ _id: userId }, { $addToSet: { collaborators: collaboratorId } });
+    await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
   }
- 
-  // create stories
+
+  // create storiess
   let createdStories = [];
   for (let i = 0; i < 100; i += 1) {
     const storyText = faker.lorem.words(Math.round(Math.random() * 20) + 1);

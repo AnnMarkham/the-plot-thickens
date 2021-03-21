@@ -13,7 +13,6 @@ type User {
   collaborators: [User]
 }
 
-
   type Story {
     _id: ID
     storyText: String
