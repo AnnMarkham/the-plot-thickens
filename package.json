@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/AnnMarkham/the-plot-thickens#readme",
   "dependencies": {
+    "@chakra-ui/react": "^1.4.1",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "framer-motion": "^4.0.0",
     "if-env": "^1.0.4"
   },
   "devDependencies": {

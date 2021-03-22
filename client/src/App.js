@@ -16,6 +16,15 @@ import Signup from './pages/Signup';
 import SingleStory from './pages/SingleStory';
 
 const client = new ApolloClient({
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    });
+  },
   uri: '/graphql'
 });
 
@@ -30,8 +39,9 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
-      <Route exact path="/mystories/:username?" component={MyStories} />
       <Route exact path="/story/:id" component={SingleStory} />
+      <Route exact path="/mystories" component={MyStories} />
+      
 
       <Route component={PageNotFound} />
       </Switch>
