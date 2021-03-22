@@ -40,7 +40,7 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/story/:id" component={SingleStory} />
-      <Route exact path="/mystories" component={MyStories} />
+      <Route exact path="/mystories/:username?" component={MyStories} />
       
 
       <Route component={PageNotFound} />

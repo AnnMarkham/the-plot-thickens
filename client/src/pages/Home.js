@@ -1,5 +1,6 @@
 import React from 'react';
 import StoryList from '../components/StoryList';
+import StoryForm from '../components/StoryForm';
 import CollaboratorList from '../components/CollaboratorList';
 
 
@@ -17,11 +18,16 @@ const Home = () => {
 
   const loggedIn = Auth.loggedIn();
   return (
-  <main id= "background">
-    <div className="flex-row justify-space-between">
-    <div className="col-12 mb-3">
-      {loading ? (
-        <div>Loading...</div>
+    <main>
+      <div className="flex-row justify-space-between">
+        {loggedIn && (
+          <div className="col-12 mb-3">
+            <StoryForm />
+          </div>
+        )}
+        <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+          {loading ? (
+            <div>Loading...</div>
       ) : (
         <StoryList stories={stories} title="Stories" />
       )}

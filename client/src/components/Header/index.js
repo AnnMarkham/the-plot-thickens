@@ -18,7 +18,7 @@ const Header = () => {
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/mystories">Me</Link>
+              <Link to="/mystories">My Stories</Link>
               <a href="/" onClick={logout}>
               Logout
               </a>
