@@ -5,15 +5,11 @@ import { ADD_NOTE } from '../../utils/mutations';
 
 const NoteForm = ({ storyId }) => {
   const [noteBody, setBody] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
-  const [addNote, { error }] = useMutation(ADD_NOTE);
+  const [addNote] = useMutation(ADD_NOTE);
 
   // update state based on form input changes
   const handleChange = event => {
-    if (event.target.value.length <= 280) {
-      setBody(event.target.value);
-      setCharacterCount(event.target.value.length);
-    }
+       setBody(event.target.value);
   };
 
   // submit form
@@ -27,36 +23,30 @@ const NoteForm = ({ storyId }) => {
 
       // clear form value
       setBody('');
-      setCharacterCount(0);
     } catch (e) {
       console.error(e);
     }
   };
 
   return (
-    <div>
-      <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/280
-        {error && <span className="ml-2">Something went wrong...</span>}
-      </p>
+
       <form
         className="flex-row justify-center justify-space-between-md align-stretch"
         onSubmit={handleFormSubmit}
       >
-        <textarea
+        <input
           placeholder="Leave a note or idea related to this story..."
           value={noteBody}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
-        ></textarea>
+        ></input>
 
         <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>
       </form>
 
-      {error && <div>Something went wrong...</div>}
-    </div>
+
   );
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import StoryForm from '../components/StoryForm';
 import StoryList from '../components/StoryList';
 import CollaboratorList from '../components/CollaboratorList';
 
@@ -20,7 +19,7 @@ const MyStories = props => {
 
   const user = data?.me || data?.user || {};
 
-  // redirect to personal mystories page if username is yours
+  // redirect to personal mystories page if username is 
   if (
     Auth.loggedIn() &&
     Auth.getMyStories().data.username === userParam
@@ -53,9 +52,6 @@ const MyStories = props => {
   return (
     <div>
       <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'your'} stories.
-        </h2>
 
         {userParam && (
           <button className="btn ml-auto" onClick={handleClick}>
@@ -66,7 +62,7 @@ const MyStories = props => {
 
       <div className="flex-row justify-space-between mb-3">
         <div className="col-12 mb-3 col-lg-8">
-          <StoryList storys={user.stories} title={`${user.username}'s stories...`} />
+          <StoryList stories={user.stories} title={`${user.username}'s stories...`} />
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
@@ -77,7 +73,7 @@ const MyStories = props => {
           />
         </div>
       </div>
-      <div className="mb-3">{!userParam && <StoryForm />}</div>
+      
     </div>
   );
 };

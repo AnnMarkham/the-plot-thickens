@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import MyStories from './pages/MyStories';
 import SingleStory from './pages/SingleStory';
+import NoteForm from './components/NoteForm';
 
 
 const client = new ApolloClient({
@@ -37,7 +38,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/story/:id" component={SingleStory} />
           <Route exact path="/mystories/:username?" component={MyStories} />
-      
+          <Route exact path ="/noteform" component={NoteForm} />
           <Route component={PageNotFound} />
         </Switch>
       </div>

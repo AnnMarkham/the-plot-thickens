@@ -12,7 +12,7 @@ const NoteList = ({ notes }) => {
         notes.map(note => (
           <p className="pill mb-3" key={note._id}>
             {note.noteBody} {'// '}
-            <Link to={`/mystory/${note.username}`} style={{ fontWeight: 700 }}>
+            <Link to={`/mystory/${note.username}`} style={{ fontWeight: 400 }}>
               {note.username} on {note.createdAt}
             </Link>
           </p>

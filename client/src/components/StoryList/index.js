@@ -7,29 +7,28 @@ const StoryList = ({ stories, title }) => {
   }*/
 
   return (
-    <div>
-      <h3>{title}</h3>
-      {stories &&
-        stories.map(story => (
-          <div key={story._id} className="card mb-3">
+    <div className="row">
+      <h2>{title}</h2>
+        {stories && stories.map(story => (
+          <div key={story._id} className="story-list-card">
             <p className="card-header">
               <Link 
               to={`mystories/${story.username}`}
-              style={{ fontWeight: 700 }}
+              style={{ fontWeight: 400 }}
               className="text-light"
               >
               {story.username}
-              </Link>
+              </Link>{""}
               story started on { story.createdAt }
             </p>
 
             <div className="card-body">
               <Link to={`/story/${story._id}`}>
-              <p>{story.storyText}</p>
-              <p className="mb-0">
-                Notes: {story.noteCount} || Click to{' '}
-                {story.noteCount ? 'see' : 'add'} add a note!
-              </p>
+                <p>{story.storyText}</p>
+                <p className="mb-0">
+                   {story.noteCoutnCount} || Click to{" "}
+                  {story.noteCount ? "see" : "add"} a note!
+                </p>
               </Link>
             </div>
           </div>
@@ -38,4 +37,6 @@ const StoryList = ({ stories, title }) => {
   );
 };
 
+
 export default StoryList;
+
