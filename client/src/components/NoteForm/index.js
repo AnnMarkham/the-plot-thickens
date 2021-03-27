@@ -29,9 +29,9 @@ const NoteForm = ({ storyId }) => {
   };
 
   return (
-
+    <div className="row">
       <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
+        className="col s12"
         onSubmit={handleFormSubmit}
       >
         <input
@@ -45,6 +45,7 @@ const NoteForm = ({ storyId }) => {
           Submit
         </button>
       </form>
+    </div>
 
 
   );

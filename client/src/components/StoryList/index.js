@@ -26,7 +26,7 @@ const StoryList = ({ stories, title }) => {
               <Link to={`/story/${story._id}`}>
                 <p>{story.storyText}</p>
                 <p className="mb-0">
-                   {story.noteCoutnCount} || Click to{" "}
+                   Click to{" "}
                   {story.noteCount ? "see" : "add"} a note!
                 </p>
               </Link>

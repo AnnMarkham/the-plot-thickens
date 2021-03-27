@@ -135,6 +135,8 @@ input {
   outline: none;
   margin-bottom: 0.5rem;
   transition: box-shadow 0.2s;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
 }
 
 input:focus {
@@ -149,11 +151,14 @@ input:focus {
   margin-right: auto;
 }
 .story-list-card{
-  border: 0.25rem solid rgb(2, 19, 2);
+  border: 0.20rem solid rgb(2, 19, 2);
   padding-left: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
   padding-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--light);
   
 }
 

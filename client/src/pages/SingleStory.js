@@ -20,20 +20,19 @@ const SingleStory = props => {
   }
 
   return (
-    <div>
-      <div className="card mb-3">
+    <div className= "row">
+      <div className="story-list-card">
+        <h3>{story.username}</h3>
         <p className="card-header">
           <span style={{ fontWeight: 400 }} className="text-light">
-            {story.username}
-          </span>{" "}
+            </span>{" "}
           story on {story.createdAt}
         </p>
         <div className="card-body">
           <p>{story.storyText}</p>
         </div>
       </div>
-      {story.noteCount > 0 && (
-        <NoteList notes={story.notes} />
+      {story.noteCount > 0 && (<NoteList notes={story.notes} />
       )}
 
       {Auth.loggedIn() && <NoteForm storyId={story._id} />}
