@@ -20,13 +20,15 @@
   "bugs": {
     "url": "https://github.com/AnnMarkham/the-plot-thickens/issues"
   },
-  "homepage": "https://github.com/AnnMarkham/the-plot-thickens#readme",
   "dependencies": {
-    "@chakra-ui/react": "^1.4.1",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "framer-motion": "^4.0.0",
-    "if-env": "^1.0.4"
+    "apollo-server-express": "^2.22.1",
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.11.0",
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.2"
   },
   "devDependencies": {
     "concurrently": "^6.0.0"
