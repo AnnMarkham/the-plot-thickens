@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import { ApolloProvider } from '@apollo/client';
 import ApolloClient from 'apollo-boost';
 
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/story/:id" component={SingleStory} />
           <Route exact path="/mystories/:username?" component={MyStories} />
           <Route exact path ="/noteform" component={NoteForm} />
+      
           <Route component={PageNotFound} />
         </Switch>
       </div>
