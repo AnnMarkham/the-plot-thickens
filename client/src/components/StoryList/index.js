@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const StoryList = ({ stories, title }) => {
   /*if (!stories.length) {
     return <h3>No Stories Yet</h3>;
   }*/
 
   return (
-    <div className="row">
-      <h2>{title}</h2>
-        {stories && stories.map(story => (
-          <div key={story._id} className="story-list-card">
-            <p className="card-header">
+    <div className="flex-row story-list">
+       <h2>{title}</h2>
+       <div className="col s12">
+         <div>
+            {stories && stories.map(story => (
+            <div key={story._id} className="card-large">
+            <p>
               <Link 
               to={`mystories/${story.username}`}
               style={{ fontWeight: 400 }}
@@ -21,18 +24,26 @@ const StoryList = ({ stories, title }) => {
               </Link>{""}
               story started on { story.createdAt }
             </p>
-
-            <div className="card-body">
+            <div className="card-content">
               <Link to={`/story/${story._id}`}>
                 <p>{story.storyText}</p>
-                <p className="mb-0">
-                   Click to{" "}
-                  {story.noteCount ? "see" : "add"} a note!
-                </p>
               </Link>
+              
+              <div className="row">
+                <div className="card-tabs col s12">
+                  <ul className="tabs">
+                    <li className="tab col s3">Add Setting     </li>
+                    <li className="tab col s3">Add Characters  </li>
+                  </ul>              
+                </div>
+              </div>
+
             </div>
           </div>
+       
         ))}
+        </div>
+        </div>
     </div>
   );
 };

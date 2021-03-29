@@ -7,7 +7,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row nav">
           <li className="mx-1">
             <Link to="/mystories">
              MyStories
@@ -23,7 +23,7 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row nav">
           <li className="mx-1">
             <Link to="/signup">
               Signup
@@ -40,7 +40,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
+    <header className="flex-row">
       <h1>
         <Link to="/">
           The Plot Thickens

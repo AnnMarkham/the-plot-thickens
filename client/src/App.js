@@ -1,16 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import { ApolloProvider } from '@apollo/client';
 import ApolloClient from 'apollo-boost';
 
-import Home from "./pages/Home";
 import Nav from './components/Nav';
-import PageNotFound from './pages/PageNotFound';
+
+import Home from "./pages/Home";
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import MyStories from './pages/MyStories';
 import SingleStory from './pages/SingleStory';
-import NoteForm from './components/NoteForm';
+import PageNotFound from './pages/PageNotFound';
 
 
 const client = new ApolloClient({
@@ -36,10 +37,10 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/story/:id" component={SingleStory} />
           <Route exact path="/mystories/:username?" component={MyStories} />
-          <Route exact path ="/noteform" component={NoteForm} />
-      
+          <Route exact path="/story/:id" component={SingleStory} />
+          
+              
           <Route component={PageNotFound} />
         </Switch>
       </div>

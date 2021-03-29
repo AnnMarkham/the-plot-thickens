@@ -73,10 +73,11 @@ p {
   margin-top: 0;
 }
 
-a {
+a:link {
   color: var(--tertiary);
-  text-decoration: none;
-  font-weight: bold;
+}
+a:visited {
+  color: rgb(24, 136, 112);
 }
 
 a:hover {
@@ -100,7 +101,7 @@ button {
   outline: none;
   cursor: pointer;
   margin-top: .5rem;
-  background-color: var(--tertiary);
+  background-color: rgb(24, 136, 112);
 }
 
 button:hover {
@@ -119,15 +120,15 @@ img {
 span[role="img"] {
   cursor: default;
 }
+.nav{
+  width: 100%;
+  background-color: var(--secondary);
+}
 
 form {
   width: 100%;
 }
-.story-text{
-  width: 100%;
-  margin-bottom: 2rem;
 
-}
 input {
   font-size: 1rem;
   padding: 0.25rem;
@@ -135,8 +136,6 @@ input {
   outline: none;
   margin-bottom: 0.5rem;
   transition: box-shadow 0.2s;
-  margin-right: 0.5rem;
-  margin-left: 1rem;
 }
 
 input:focus {
@@ -150,16 +149,11 @@ input:focus {
   margin-left: auto;
   margin-right: auto;
 }
-.story-list-card{
-  border: 0.20rem solid rgb(2, 19, 2);
-  padding-left: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding-right: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  background-color: var(--light);
-  
+.tab{
+  font-size: 0.5 rem;
+}
+.story-list{
+  margin-left: 2 rem;
 }
 
 .flex-row {
@@ -215,15 +209,13 @@ input:focus {
   padding-bottom: var(--spacing-two);
 }
 
-.card-content {
-  width: 50%;
+.card-large{
+  width: 100%;
   background-color: var(--light);
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-bottom: 5rem; 
-  border-bottom-color:rgba(0, 0, 0, .5)
-
-}
+  color:rgba(0, 0, 0, .5);
+  padding: 1rem;
+  border-bottom: 5rem rgba(0, 0, 0, .5); 
+ }
 
 .error-text {
   color: var(--error);
