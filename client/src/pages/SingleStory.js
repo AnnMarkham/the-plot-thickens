@@ -50,8 +50,8 @@ const SingleStory = props => {
         </div>
           <button className="btn col-12 col-md-3" type="click">
           Delete this Story {() => handleDeleteStory(story.storyId)}
-                  
-        </button> 
+              
+          </button> 
         </div>
       <div>
         {story.noteCount > 0 && (<NoteList notes={story.notes} />
