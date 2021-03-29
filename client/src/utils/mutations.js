@@ -24,19 +24,6 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_COLLABORATOR = gql`
-  mutation addCollaborator($id: ID!) {
-    addCollaborator(collaboratorId: $id) {
-      _id
-      username
-      collaboratorCount
-      collaborators {
-        _id
-        username
-      }
-    }
-  }
-`;
 
 export const ADD_STORY = gql`
   mutation addStory($storyText: String!) {
@@ -52,6 +39,21 @@ export const ADD_STORY = gql`
     }
   }
 `;
+
+export const DELETE_STORY= gql`
+mutation deleteStory($storyId: ID){
+  deleteStory(storyId: $storyId){  
+      _id
+      storyText
+      createdAt
+      username
+      noteCount
+      notes {
+        _id
+      }
+    }
+ }
+ `;
 
 export const ADD_NOTE = gql`
   mutation addNote($storyId: ID!, $noteBody: String!) {

@@ -46,7 +46,7 @@ type User {
   addUser(username: String!, email: String!, password: String!): Auth
   addStory(storyText: String!): Story
   addNote(storyId: ID, noteBody: String!): Story
-  addCollaborator(collaboratorId: ID!): User
+  deleteStory(storyId: ID): User
 }
 `;
 

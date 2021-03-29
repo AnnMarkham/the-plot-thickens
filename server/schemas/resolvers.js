@@ -75,7 +75,20 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addNote: async (parent, { storyId, noteBody }, context) => {
+
+    deleteStory: async  (parent, args, context) => {
+      if (context.user) {
+        const story = await User.findOneAndRemove(
+          { _id: context.storyId },
+          { $pull: { stories: story._id } },
+          { new: true}
+        );
+        return story;
+      }
+      throw new AuthenticationError('You need to be logged in')
+    },
+
+      addNote: async (parent, { storyId, noteBody }, context) => {
       if (context.user) {
         const updatedStory = await Story.findOneAndUpdate(
           { _id: storyId },
@@ -88,19 +101,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addCollaborator: async (parent, { collaboratorId }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { collaborators: collaboratorId } },
-          { new: true }
-        ).populate('collaborators');
 
-        return updatedUser;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    }
   }
 };
 

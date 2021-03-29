@@ -6,7 +6,7 @@ const StoryList = ({ stories, title }) => {
   /*if (!stories.length) {
     return <h3>No Stories Yet</h3>;
   }*/
-
+  
   return (
     <div className="flex-row story-list">
        <h2>{title}</h2>
